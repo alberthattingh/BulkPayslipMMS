@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkPayslipMMS", "BulkPayslipMMS\BulkPayslipMMS.csproj", "{FD877379-9530-41C1-BD93-392723D921F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BulkPayslipMMS.Tests", "BulkPayslipMMS.Tests\BulkPayslipMMS.Tests.csproj", "{45F8EA63-F1C3-407A-BBAE-D46C642C4CDF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FD877379-9530-41C1-BD93-392723D921F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD877379-9530-41C1-BD93-392723D921F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD877379-9530-41C1-BD93-392723D921F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD877379-9530-41C1-BD93-392723D921F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45F8EA63-F1C3-407A-BBAE-D46C642C4CDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45F8EA63-F1C3-407A-BBAE-D46C642C4CDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45F8EA63-F1C3-407A-BBAE-D46C642C4CDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45F8EA63-F1C3-407A-BBAE-D46C642C4CDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1C173F8F-29A8-4C61-9ABA-4926F0007128}
+	EndGlobalSection
+EndGlobal

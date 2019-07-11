@@ -1,0 +1,280 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>evosplitpdf</name>
+    </assembly>
+    <members>
+        <member name="F:HiQPdfPrv.Pdf.Security.SecurityHandlers.Standard">
+            <summary>
+            The built-in password-based security handler.
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfSplit.PDFCompressionLevel">
+            <summary>
+            This enumration represents the possible compression levels that can be used in the PDF documents created by the PDF Split library
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.AboveNormal">
+            <summary>
+            Better compression but takes more time to compress
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.BelowNormal">
+            <summary>
+            Something middle between normal and BestSpeed compressions
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.Best">
+            <summary>
+            Use the best compression but takes more time to compress
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.BestSpeed">
+            <summary>
+            The compression speed is high but the compression percentage is low
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.NoCompression">
+            <summary>
+            Does not do any compression
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfSplit.PDFCompressionLevel.Normal">
+            <summary>
+            Use normal compression, a balance between compression speed and resulted size
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfSplit.PdfDocumentOptions">
+            <summary>
+            This class encapsulates the options to control the PDF document
+            redering process. The PDFSplitManager class define 
+            a reference to an object of this type
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfSplit.PdfDocumentOptions.PdfCompressionLevel">
+            <summary>
+            This property controls the compression level of the rendered PDF document
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfSplit.PDFSplitDoc">
+            <summary>
+            The PDFSplitDoc class encapsulates memory representation of a document resulted 
+            after the split process. The main property Buffer gives the PDF document as an array of bytes.
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitDoc.#ctor(System.Byte[])">
+            <summary>
+            Constructs a PdfSplitDoc based on the PDF document bytes
+            </summary>
+            <param name="pdfSplitBytes">The PDF document bytes</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitDoc.SaveToFile(System.String)">
+            <summary>
+            Save the PDF document buffer into the specified disk file
+            </summary>
+            <param name="destFilePath">The file where to save the PDF document</param>
+        </member>
+        <member name="P:EvoPdf.PdfSplit.PDFSplitDoc.Buffer">
+            <summary>
+            The PDF document bytes
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfSplit.PDFSplitManager">
+            <summary>
+            The PDF split manager allows you to split a PDF file or extract a range a pages 
+            from the PDF document
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.#ctor">
+            <summary>
+            Merge using default PDF document options
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.#ctor(EvoPdf.PdfSplit.PdfDocumentOptions)">
+            <summary>
+            Merge using the specified PDF document options
+            </summary>
+            <param name="pdfDocumentOptions">The PDF document options</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToMemory(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Extracts specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document containing the extracted pages
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <returns>The memory representation of the resulted PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToMemory(System.Byte[],System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Extracts 'repeatCount' times the specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document for each set of extracted pages. Each set of extracted pages
+            has 'splitPageCount' pages. 
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatCount">Indicates how many documents of splitPageCount pages to create</param>
+            <returns>The memory representation of the resulted array of PDF documents</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToMemory(System.Byte[],System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method is similar to ExtractPagesFromMemoryToMemory with 'repeatCount' parameter but instead of exctracting a specified number
+            of chunks, the chunks are extracted until the end of the document is reached when the 'repeatToEnd'
+            parameter is true
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatToEnd">When true this parameter indicates to split the PDF document to the end</param>
+            <returns>The memory representation of the resulted array of PDF documents</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToMemory(System.String,System.Int32,System.Int32)">
+            <summary>
+            Extracts specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document containing the extracted pages
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <returns>The memory representation of the resulted PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToMemory(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Extracts 'repeatCount' times 'splitPageCount' number of pages from the source PDF document starting from the
+            specified page number and creates a new PDF document for each set of extracted pages. Each set of extracted pages
+            has 'splitPageCount' pages. 
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatCount">Indicates how many documents of splitPageCount pages to create</param>
+            <returns>The memory representation of the resulted array of PDF documents</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToMemory(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method is similar to the ExtractPagesFromFileToMemory version with 'repeatCount' but instead of extracting a specified number
+            of chunks, the chunks are extracted until the end of the document is reached when the 'repeatToEnd'
+            parameter is true
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatToEnd">When true this parameter indicates to split the PDF document to the end</param>
+            <returns>The memory representation of the resulted array of PDF documents</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToFile(System.Byte[],System.String,System.Int32,System.Int32)">
+            <summary>
+            Extracts specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document containing the extracted pages
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToFile(System.Byte[],System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Extracts 'repeatCount' times the specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document for each set of extracted pages. Each set of extracted pages
+            has 'splitPageCount' pages. Each resulted PDF document is saved in the file specified by 'destPDFFilePath'
+            concatenated with the chunk index
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatCount">Indicates how many documents of splitPageCount pages to create</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromMemoryToFile(System.Byte[],System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method is similar to ExtractPagesFromMemoryToMemory with 'repeatCount' parameter but instead of exctracting a specified number
+            of chunks, the chunks are extracted until the end of the document is reached when the 'repeatToEnd'
+            parameter is true
+            </summary>
+            <param name="srcPdfBytes">The source PDF document as an array of bytes</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param>
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatToEnd">When true this parameter indicates to split the PDF document to the end</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToFile(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Extracts specified number of pages from the specified source PDF document starting from the
+            specified page number and creates a new PDF document containing the extracted pages
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param> 
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToFile(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Extracts 'repeatCount' times 'splitPageCount' number of pages from the source PDF document starting from the
+            specified page number and creates a new PDF document for each set of extracted pages. Each set of extracted pages
+            has 'splitPageCount' pages. Each resulted PDF document is saved in the file specified by 'destPDFFilePath'
+            concatenated with the chunk index
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param> 
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatCount">Indicates how many documents of splitPageCount pages to create</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.ExtractPagesFromFileToFile(System.String,System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            This method is similar to the ExtractPagesFromFileToMemory version with 'repeatCount' but instead of extracting a specified number
+            of chunks, the chunks are extracted until the end of the document is reached when the 'repeatToEnd'
+            parameter is true.
+            </summary>
+            <param name="srcPDFFilePath">The full path of source PDF file</param>
+            <param name="destPDFFilePath">The full path of destination PDF file</param> 
+            <param name="startPageNumber">The source PDF document page number from where to start extracting pages </param>
+            <param name="splitPageCount">The number of pages to extract</param>
+            <param name="repeatToEnd">When true this parameter indicates to split the PDF document to the end</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.GetPdfPageCount(System.Byte[])">
+            <summary>
+            Returns the number of pages of the specified PDF document
+            </summary>
+            <param name="srcPdfBytes">The representation of the PDF document as an array of bytes</param>
+            <returns>Number of PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.PDFSplitManager.GetPdfPageCount(System.String)">
+            <summary>
+            Returns the number of pages of the specified PDF document
+            </summary>
+            <param name="srcPdfFilePath">The PDF file full path</param>
+            <returns>Number of PDF document pages</returns>
+        </member>
+        <member name="P:EvoPdf.PdfSplit.PDFSplitManager.LicenseKey">
+            <summary>
+            Gets or sets the license key used by the PDF Split library
+            </summary>
+        </member>
+        <member name="P:Winnovative.PDFSplit.Internal.PDFSplitter.LicenseKey">
+            <summary>
+            Gets or sets the license key used by the PDF Split library
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfSplit.SplitPDFException">
+            <summary>
+            The exception thrown by the Split PDF library.
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.SplitPDFException.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">The exception message</param>
+        </member>
+        <member name="M:EvoPdf.PdfSplit.SplitPDFException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">The exception message</param>
+            <param name="innerException">The inner exception that triggered this exception</param>
+        </member>
+    </members>
+</doc>

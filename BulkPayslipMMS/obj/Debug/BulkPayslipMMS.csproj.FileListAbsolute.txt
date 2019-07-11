@@ -1,0 +1,17 @@
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\BulkPayslipMMS.exe
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\BulkPayslipMMS.pdb
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\EvoPdfToImage.dll
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\EvoPdfToText.dll
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\evosplitpdf.dll
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\System.Net.Http.dll
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\EvoPdfToImage.xml
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\EvoPdfToText.xml
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\evosplitpdf.xml
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\System.Net.Http.xml
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\evopdftoimage.dat
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\bin\Debug\evopdftotext.dat
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\obj\Debug\BulkPayslipMMS.csproj.CoreCompileInputs.cache
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\obj\Debug\BulkPayslipMMS.csproj.CopyComplete
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\obj\Debug\BulkPayslipMMS.exe
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\obj\Debug\BulkPayslipMMS.pdb
+C:\Work\BulkPayslipMMS\BulkPayslipMMS\obj\Debug\BulkPayslipMMS.csprojAssemblyReference.cache

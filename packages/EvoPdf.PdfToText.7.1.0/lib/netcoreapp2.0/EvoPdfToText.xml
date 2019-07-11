@@ -1,0 +1,455 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EvoPdfToText</name>
+    </assembly>
+    <members>
+        <member name="T:EvoPdf.PdfToText.ContextImpersonationLogonMode">
+            <summary>
+            The logon mode for impersonation
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.ContextImpersonationLogonMode.Automatic">
+            <summary>
+            Automatic logon
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.ContextImpersonationLogonMode.Explicit">
+            <summary>
+            Explicit logon
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfToText.ContextImpersonationOptions">
+            <summary>
+            This class encapsulates the options to control the context impersonation during tool execution
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.ContextImpersonationOptions.CurrentUserImpersonation">
+            <summary>
+            A flag indicating if the tool should impersonate the current user during execution.
+            By default this property is false.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.ContextImpersonationOptions.Username">
+            <summary>
+            The name of the user to logon before execution. The <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.Domain"/> and <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.Password"/> properties must also be set.
+            This property has priority over the <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.CurrentUserImpersonation"/> property. 
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.ContextImpersonationOptions.Domain">
+            <summary>
+            The user Windows domain name. This property together with <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.Username"/> property define the user to logon before execution.
+            If the user is not part of a Windows domain the machine name can be used.
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.ContextImpersonationOptions.Password">
+            <summary>
+            The password of the user specified by <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.Username"/> and <see cref="P:EvoPdf.PdfToText.ContextImpersonationOptions.Domain"/> properties.
+            By default this property is not set.
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.ContextImpersonationOptions.LogonMode">
+            <summary>
+            The logon mode of the user before execution. This property has effect only when a username for impersonation is specified.
+            The default logon mode is automatic.
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfToText.FindTextLocation">
+            <summary>
+            This class represents the location of a text in a PDF page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.FindTextLocation.PageNumber">
+            <summary>
+            The PDF page number
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.FindTextLocation.X">
+            <summary>
+            The text X location in PDF page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.FindTextLocation.Y">
+            <summary>
+            The text Y location in PDF page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.FindTextLocation.Width">
+            <summary>
+            The text width in PDF page
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.FindTextLocation.Height">
+            <summary>
+            The text height in PDF page
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfToText.PdfDocumentInfo">
+            <summary>
+            This class encapsulates various properties of the PDF document being converted or searched
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Title">
+            <summary>
+            The PDF document title
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Subject">
+            <summary>
+            The PDF document subject
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Keywords">
+            <summary>
+            The PDF document keywords
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Author">
+            <summary>
+            The PDF document author
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Creator">
+            <summary>
+            The PDF document creator
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.Producer">
+            <summary>
+            The PDF document producer
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.CreationDate">
+            <summary>
+            The PDF document creation date
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.LastModifiedDate">
+            <summary>
+            The PDF document last modification date
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfDocumentInfo.PageCount">
+            <summary>
+            The number of pages in PDF document
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfToText.PdfToTextConverter">
+            <summary>
+            This class encapsulates the PDF to Text Converter functionality and allows you to extract the text from PDF documents
+            and to search text in PDF documents
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.#ctor">
+            <summary>
+            PDF to Text constructor
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.String)">
+            <summary>
+            Converts all the pages of a PDF file to text
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be converted</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.String,System.Int32)">
+            <summary>
+            Converts the pages of a PDF file to text starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.String,System.Int32,System.Int32)">
+            <summary>
+            Converts a range of pages of a PDF file to text
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.IO.Stream)">
+            <summary>
+            Converts all the pages of PDF document in a stream to text
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be converted</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.IO.Stream,System.Int32)">
+            <summary>
+            Converts the pages of a PDF document in a stream to text starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.IO.Stream,System.Int32,System.Int32)">
+            <summary>
+            Converts a range of pages of a PDF document in a stream to text
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.Byte[])">
+            <summary>
+            Converts all the pages in a PDF document to text
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be converted</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.Byte[],System.Int32)">
+            <summary>
+            Converts the pages of a PDF document to text starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.ConvertToText(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Converts a range of pages of a PDF document to text
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document to be converted</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <returns>The text from PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.GetPageCount(System.String)">
+            <summary>
+            Gets the number of PDF pages of a PDF file
+            </summary>
+            <param name="pdfFile">The full path of the PDF file</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.GetPageCount(System.IO.Stream)">
+            <summary>
+            Gets the number of pages of a PDF document in a stream
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.GetPageCount(System.Byte[])">
+            <summary>
+            Gets the number of PDF pages of a PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document</param>
+            <returns>The number of pages in PDF document</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in all the pages of a PDF file
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to search</param>
+            <param name="textToFind">The text to find</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.String,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in PDF pages of a PDF file starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to search</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.String,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in a range of pages of a PDF file
+            </summary>
+            <param name="pdfFile">The full path of the PDF file to search</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.IO.Stream,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in all the pages of a PDF document in a stream
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.IO.Stream,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in PDF pages of a PDF document in a stream starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.IO.Stream,System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in a range of pages of a PDF document in a stream
+            </summary>
+            <param name="pdfStream">The stream containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.Byte[],System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in all the pages of a PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.Byte[],System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in PDF pages of a PDF document starting from a given PDF page number to the end of the PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextConverter.FindText(System.Byte[],System.String,System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Searches for a given text in a range of pages of a PDF document
+            </summary>
+            <param name="pdfData">The memory buffer containing the PDF document</param>
+            <param name="textToFind">The text to find</param>
+            <param name="startPageNumber">The start page number</param>
+            <param name="endPageNumber">The end page number</param>
+            <param name="caseSensitive">A flag indicating if the search should match case</param>
+            <param name="wholeWord">A flag indicating if the search should match whole words</param>
+            <returns>The records containing the location of the searched text in PDF document pages</returns>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.RunTimeoutSec">
+            <summary>
+            The maximum time allowed for this tool to run
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.Layout">
+            <summary>
+            The text layout in the resulted text document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.AddHtmlMetaTags">
+            <summary>
+            A flag indicating if the converter should wrap the resulted text in a HTML document. The default value is false
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.HtmlCharset">
+            <summary>
+            The charset of the HTML document wrapping the resulted text
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.MarkPageBreaks">
+            <summary>
+            A flag indicating if the page breaks should be marked by <see cref="P:EvoPdf.PdfToText.PdfToTextConverter.PAGE_BREAK_MARK"/> special character
+            in the resulted PDF document. The default value is false
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.UserPassword">
+            <summary>
+            The user password to be used to open a password protected PDF document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.OwnerPassword">
+            <summary>
+            The owner password to be used to open a password protected PDF document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.LicenseKey">
+            <summary>
+            Gets or sets the license key string received from vendor. 
+            If this property is null the tool will automatically enter in evaluation mode
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.PAGE_BREAK_MARK">
+            <summary>
+            The special character to mark the PDF pages in the resulted PDF document
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.ImpersonationOptions">
+            <summary>
+            The impersonation options used during tool execution
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.PdfToolFullPath">
+            <summary>
+            Sets the full path of  the .dat resource file. By default this file is expected to be found 
+            in the same folder with .dll assembly
+            </summary>
+        </member>
+        <member name="P:EvoPdf.PdfToText.PdfToTextConverter.PdfDocumentInfo">
+            <summary>
+            Gets the object encapsulating the PDF document properties. This objects is populated after 
+            tool execution finished
+            </summary>
+        </member>
+        <member name="T:EvoPdf.PdfToText.PdfToTextException">
+            <summary>
+            This class represents an exception thrown by the PDF to Text converter
+            </summary>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextException.#ctor(System.String)">
+            <summary>
+            Constructs a PDF to Text exception with the given error message
+            </summary>
+            <param name="message">The exception message</param>
+        </member>
+        <member name="M:EvoPdf.PdfToText.PdfToTextException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructs a PDF to Text exception with the given error message and the given inner exception object
+            </summary>
+            <param name="message">The exception message</param>
+            <param name="innerException">The inner exception that triggered this exception</param>
+        </member>
+        <member name="T:EvoPdf.PdfToText.TextLayout">
+            <summary>
+            The possible layouts of the resulted text
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.TextLayout.OriginalLayout">
+            <summary>
+            The resulted text preserves the visual layout of the text in PDF document
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.TextLayout.ReadingLayout">
+            <summary>
+            The resulted text preserves the reading order of the text in PDF document
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.TextLayout.TableModeLayout">
+            <summary>
+            The resulted text preserves the visual layout of the text as much as possible in a table format
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.TextLayout.FixedLineSpacingLayout">
+            <summary>
+            The resulted text uses a fixed font with fixed line spacing
+            </summary>
+        </member>
+        <member name="F:EvoPdf.PdfToText.TextLayout.PdfInternalOrderLayout">
+            <summary>
+            The resulted text is output keeping the internal order of the text in PDF document
+            </summary>
+        </member>
+    </members>
+</doc>
