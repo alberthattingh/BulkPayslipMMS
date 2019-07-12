@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BulkPayslipMMS;
 using System.Xml.Linq;
+using System.Drawing;
 
 namespace BulkPayslipMMS.Tests
 {
@@ -72,6 +73,19 @@ namespace BulkPayslipMMS.Tests
 
             // Act
             string result = Program.GetImageToSendByEmployeeNumber(employeeNumber);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestGetPNGFileSize()
+        {
+            // Arrange
+            Image image = Image.FromFile(@"C:\Work\BulkPayslipMMS\BulkPayslipMMS.Tests\ResourceFiles\ImageToSend.PNG");
+
+            // Act
+            int result = Program.GetPNGFileSize(image);
 
             // Assert
             Assert.IsNotNull(result);
