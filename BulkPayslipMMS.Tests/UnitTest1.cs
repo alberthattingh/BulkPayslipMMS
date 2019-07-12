@@ -63,5 +63,11 @@ namespace BulkPayslipMMS.Tests
             // Assert
             Assert.IsNotNull(result);
         }
+
+        [TestMethod]
+        public void TestGetImageToSendByEmployeeNumber()
+        {
+            System.IO.File.
+        }
     }
 }

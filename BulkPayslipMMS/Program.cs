@@ -150,8 +150,15 @@ namespace BulkPayslipMMS
             Image image = converter.ConvertPdfPagesToImage(path)[0].ImageObject;
             string outputPath = string.Format(@"{0}{1}.PNG", PathToFilesDirectory, filename);
             SaveImageWithReducedSize(image, outputPath);
-
+            
             return outputPath;
+        }
+
+        public static int GetPNGFileSize(Image image)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(image, typeof(byte[]));
+            return (xByte.Length/1024);
         }
 
         public static void SaveImageWithReducedSize(Image image, string outputPath)
@@ -159,7 +166,11 @@ namespace BulkPayslipMMS
             int MAX_WIDTH = 832;
             int MAX_HEIGHT = 1248;
             Bitmap bitmap = new Bitmap(image, new Size(MAX_WIDTH, MAX_HEIGHT));
-            bitmap.Save(outputPath, ImageFormat.Png);
+
+            if (GetPNGFileSize(bitmap) >= 145)
+                Console.WriteLine("Error: The total file size of the MMS exceeds the maximum of 150KB");
+            else
+                bitmap.Save(outputPath, ImageFormat.Png);
         }
 
         public static void GeneratePayslipFiles(string originalPayslipFileName)
