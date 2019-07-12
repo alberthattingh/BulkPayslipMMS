@@ -66,19 +66,6 @@ namespace BulkPayslipMMS.Tests
         }
 
         [TestMethod]
-        public void TestGetImageToSendByEmployeeNumber()
-        {
-            // Arrange
-            string employeeNumber = "6508_890914";
-
-            // Act
-            string result = Program.GetImageToSendByEmployeeNumber(employeeNumber);
-
-            // Assert
-            Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void TestGetPNGFileSize()
         {
             // Arrange
