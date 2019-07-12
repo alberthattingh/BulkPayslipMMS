@@ -163,11 +163,12 @@ namespace BulkPayslipMMS
 
         public static void SaveImageWithReducedSize(Image image, string outputPath)
         {
+            int MAX_FILE_SIZE = 148;
             int MAX_WIDTH = 832;
             int MAX_HEIGHT = 1248;
             Bitmap bitmap = new Bitmap(image, new Size(MAX_WIDTH, MAX_HEIGHT));
 
-            if (GetPNGFileSize(bitmap) >= 145)
+            if (GetPNGFileSize(bitmap) >= MAX_FILE_SIZE)
                 Console.WriteLine("Error: The total file size of the MMS exceeds the maximum of 150KB");
             else
                 bitmap.Save(outputPath, ImageFormat.Png);
